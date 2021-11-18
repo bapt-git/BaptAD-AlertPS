@@ -3,7 +3,7 @@
   <RegistrationInfo>
     <Date>2021-11-17T17:23:08.2831294</Date>
     <Author>XXXX</Author>
-    <Description>Création de compte Utilisateur sur l'AD - Activation compte utilisateur</Description>
+    <Description>Compte Utilisateur sur l'AD - Activation compte utilisateur</Description>
     <URI>\Tâches de l’Observateur d’événements\Security_Microsoft-Windows-Security-Auditing-4722</URI>
   </RegistrationInfo>
   <Triggers>
