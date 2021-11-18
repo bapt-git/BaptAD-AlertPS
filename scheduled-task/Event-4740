@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<Task version="1.2" xmlns="http://schemas.microsoft.com/windows/2004/02/mit/task">
+  <RegistrationInfo>
+    <Date>2021-11-17T17:23:08.2831294</Date>
+    <Author>XXXX</Author>
+    <Description>Compte Utilisateur sur l'AD - Verrouillage d'un compte utilisateur</Description>
+    <URI>\Tâches de l’Observateur d’événements\Security_Microsoft-Windows-Security-Auditing-4740</URI>
+  </RegistrationInfo>
+  <Triggers>
+    <EventTrigger>
+      <Enabled>true</Enabled>
+      <Subscription>&lt;QueryList&gt;&lt;Query Id="0" Path="Security"&gt;&lt;Select Path="Security"&gt;*[System[Provider[@Name='Microsoft-Windows-Security-Auditing'] and EventID=4740]]&lt;/Select&gt;&lt;/Query&gt;&lt;/QueryList&gt;</Subscription>
+      <ValueQueries>
+        <Value name="eventid">Event/System/EventID</Value>
+        <Value name="subjectusername">Event/EventData/Data[@Name='SubjectUserName']</Value>
+        <Value name="subjectusersid">Event/EventData/Data[@Name='SubjectUserSid']</Value>
+        <Value name="targetsid">Event/EventData/Data[@Name='TargetSid']</Value>
+        <Value name="targetusername">Event/EventData/Data[@Name='TargetUserName']</Value>
+      </ValueQueries>
+    </EventTrigger>
+  </Triggers>
+  <Principals>
+    <Principal id="Author">
+      <UserId>XXXX</UserId>
+      <LogonType>Password</LogonType>
+      <RunLevel>LeastPrivilege</RunLevel>
+    </Principal>
+  </Principals>
+  <Settings>
+    <MultipleInstancesPolicy>IgnoreNew</MultipleInstancesPolicy>
+    <DisallowStartIfOnBatteries>true</DisallowStartIfOnBatteries>
+    <StopIfGoingOnBatteries>true</StopIfGoingOnBatteries>
+    <AllowHardTerminate>true</AllowHardTerminate>
+    <StartWhenAvailable>false</StartWhenAvailable>
+    <RunOnlyIfNetworkAvailable>false</RunOnlyIfNetworkAvailable>
+    <IdleSettings>
+      <StopOnIdleEnd>true</StopOnIdleEnd>
+      <RestartOnIdle>false</RestartOnIdle>
+    </IdleSettings>
+    <AllowStartOnDemand>true</AllowStartOnDemand>
+    <Enabled>true</Enabled>
+    <Hidden>false</Hidden>
+    <RunOnlyIfIdle>false</RunOnlyIfIdle>
+    <WakeToRun>false</WakeToRun>
+    <ExecutionTimeLimit>PT1H</ExecutionTimeLimit>
+    <Priority>7</Priority>
+  </Settings>
+  <Actions Context="Author">
+    <Exec>
+      <Command>PowerShell</Command>
+      <Arguments>-file "C:\Utilitaires\PowerShell\alerte.ps1" -eventID $(eventid) -targetsid $(targetsid) -subjectusersid $(subjectusersid) -targetusername $(targetusername) -subjectusername $(subjectusername)</Arguments>
+      <WorkingDirectory>C:\</WorkingDirectory>
+    </Exec>
+  </Actions>
+</Task>
