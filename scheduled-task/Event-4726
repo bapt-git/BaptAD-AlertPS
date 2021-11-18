@@ -3,7 +3,7 @@
   <RegistrationInfo>
     <Date>2021-11-17T17:23:08.2831294</Date>
     <Author>xxxx</Author>
-    <Description>Création de compte Utilisateur sur l'AD - Suppression compte utilisateur</Description>
+    <Description>Compte Utilisateur sur l'AD - Suppression compte utilisateur</Description>
     <URI>\Tâches de l’Observateur d’événements\Security_Microsoft-Windows-Security-Auditing-4726</URI>
   </RegistrationInfo>
   <Triggers>
