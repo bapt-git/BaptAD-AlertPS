@@ -1,10 +1,9 @@
 param($eventID,$subjectusername,$targetusername,$targetsid,$subjectusersid)
 
-$Mailaddrrec = "bmaubey@simamoto.fr"
-$Mailaddrexp = "AD-Sima@simamoto.fr"
-$smtp = "smtp.simamoto.Fr"
+$Mailaddrrec = "emaildestinataire@domaine.fr"
+$Mailaddrexp = "emailexpéditeur@domaine.fr"
+$smtp = "smtp.domaine.Fr"
 $logfil = "C:\Utilitaires\log\outputAD.txt"
-
 
 
 ### Fonction : ctrl activation d'un utilisteur
